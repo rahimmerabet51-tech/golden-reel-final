@@ -40,9 +40,9 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link
           href="/"
-          className="text-2xl font-serif font-bold text-white tracking-wider"
+          className="text-2xl md:text-3xl font-serif font-bold italic tracking-tighter text-white"
         >
-          Rahim <span className="text-primary">Merabet</span>
+          R <span className="text-primary">motion</span>
         </Link>
 
         {/* Desktop Nav */}

@@ -22,7 +22,7 @@ export function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
                 <div className="bg-black/70 backdrop-blur-sm p-3 md:p-4 border border-primary/30">
-                  <p className="text-primary text-xs md:text-sm font-semibold mb-1">Rahim Merabet</p>
+                  <p className="text-primary text-xs md:text-sm font-semibold mb-1">R motion</p>
                   <p className="text-white/80 text-xs md:text-sm">Cinematic Visual Storyteller</p>
                 </div>
               </div>
@@ -36,7 +36,7 @@ export function About() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-primary uppercase tracking-[0.2em] text-xs md:text-sm font-semibold mb-3 md:mb-4 block">
-              Rahim Merabet
+              R motion
             </span>
             <h2 className="subheading-responsive font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
               Professional Videographer & Photographer

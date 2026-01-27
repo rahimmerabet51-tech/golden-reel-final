@@ -78,7 +78,7 @@ export default function Profile() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-black/70 backdrop-blur-sm p-4 border border-primary/30">
-                    <p className="text-primary text-sm font-semibold mb-1">Rahim Merabet</p>
+                    <p className="text-primary text-sm font-semibold mb-1">R motion</p>
                     <p className="text-white/80 text-sm">Cinematic Visual Storyteller</p>
                   </div>
                 </div>
