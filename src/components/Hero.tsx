@@ -26,7 +26,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block py-1 px-3 border border-yellow-600/50 text-yellow-600 text-sm tracking-[0.2em] uppercase mb-6 bg-black/50 backdrop-blur-sm">
+          <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-sm tracking-[0.2em] uppercase mb-6 bg-black/50 backdrop-blur-sm shadow-lg">
             Algeria's Premier Production
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight">
@@ -42,7 +42,7 @@ export function Hero() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <Button 
               size="lg"
-              className="bg-yellow-600 text-white hover:bg-yellow-700 text-lg px-8 py-6 rounded-none min-w-[200px]"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 rounded-none min-w-[200px]"
               onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
               View Portfolio
@@ -50,7 +50,7 @@ export function Hero() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-yellow-600/50 text-yellow-600 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 text-lg px-8 py-6 rounded-none min-w-[200px]"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 rounded-none min-w-[200px]"
               onClick={() => window.open("https://wa.me/213000000000", "_blank")}
             >
               Contact via WhatsApp

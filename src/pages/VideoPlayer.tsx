@@ -115,7 +115,7 @@ export default function VideoPlayer() {
           <h1 className="text-4xl font-serif text-primary mb-4">Work Not Found</h1>
           <p className="text-white/70 mb-8">The featured work you're looking for doesn't exist.</p>
           <Button 
-            className="bg-primary text-black hover:bg-primary/90"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300"
             asChild
           >
             <Link href="/featured-works">
@@ -204,7 +204,7 @@ export default function VideoPlayer() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button 
                     size="lg"
-                    className="bg-primary text-black hover:bg-primary/90 text-lg px-8 py-4 rounded-none"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-4 rounded-none"
                     asChild
                   >
                     <Link href="/contact">
@@ -216,11 +216,13 @@ export default function VideoPlayer() {
                     <Button 
                       size="lg"
                       variant="outline"
-                      className="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white text-lg px-8 py-4 rounded-none"
-                      onClick={() => window.open(currentWork.videoUrl, '_blank')}
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-4 rounded-none"
+                      asChild
                     >
-                      <Play className="w-5 h-5 mr-2" />
-                      Watch on Instagram
+                      <a href={currentWork.videoUrl} target="_blank" rel="noopener noreferrer">
+                        <Play className="w-5 h-5 mr-2" />
+                        Watch on Instagram
+                      </a>
                     </Button>
                   )}
                 </div>
