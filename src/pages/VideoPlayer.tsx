@@ -137,9 +137,9 @@ export default function VideoPlayer() {
       <Navigation />
       
       {/* Video Details Section */}
-      <section className="py-20 px-6 border-t border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <section className="section-padding-sm px-6 border-t border-white/10">
+        <div className="container-responsive">
+          <div className="grid-responsive-2 gap-8 md:gap-12">
             
             {/* Main Content - 2 columns */}
             <motion.div
@@ -148,42 +148,42 @@ export default function VideoPlayer() {
               viewport={{ once: true }}
               className="lg:col-span-2"
             >
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 <div>
-                  <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-sm tracking-[0.2em] uppercase mb-6">
+                  <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-4 md:mb-6">
                     {currentWork.category}
                   </span>
-                  <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+                  <h1 className="heading-responsive font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
                     {currentWork.title}
                   </h1>
-                  <p className="text-lg text-white/80 leading-relaxed">
+                  <p className="text-responsive text-white/80 leading-relaxed">
                     {currentWork.description}
                   </p>
                 </div>
 
                 {/* Project Metadata */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   <div className="flex items-center gap-3">
                     <User className="text-primary w-5 h-5" />
                     <div>
-                      <p className="text-white/60 text-sm">Client</p>
-                      <p className="text-white font-semibold">{currentWork.client}</p>
+                      <p className="text-white/60 text-xs md:text-sm">Client</p>
+                      <p className="text-white font-semibold text-sm md:text-base">{currentWork.client}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center gap-3">
                     <Calendar className="text-primary w-5 h-5" />
                     <div>
-                      <p className="text-white/60 text-sm">Year</p>
-                      <p className="text-white font-semibold">{currentWork.year}</p>
+                      <p className="text-white/60 text-xs md:text-sm">Year</p>
+                      <p className="text-white font-semibold text-sm md:text-base">{currentWork.year}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center gap-3">
                     <Tag className="text-primary w-5 h-5" />
                     <div>
-                      <p className="text-white/60 text-sm">Category</p>
-                      <p className="text-white font-semibold">{currentWork.category}</p>
+                      <p className="text-white/60 text-xs md:text-sm">Category</p>
+                      <p className="text-white font-semibold text-sm md:text-base">{currentWork.category}</p>
                     </div>
                   </div>
                 </div>
@@ -193,7 +193,7 @@ export default function VideoPlayer() {
                   {currentWork.tags.map((tag) => (
                     <span 
                       key={tag}
-                      className="px-3 py-1 bg-primary/20 text-primary border border-primary/30 text-sm rounded-none"
+                      className="px-3 py-1 bg-primary/20 text-primary border border-primary/30 text-xs md:text-sm rounded-none"
                     >
                       {tag}
                     </span>
@@ -204,7 +204,7 @@ export default function VideoPlayer() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button 
                     size="lg"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-4 rounded-none"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
                     asChild
                   >
                     <Link href="/contact">
@@ -216,7 +216,7 @@ export default function VideoPlayer() {
                     <Button 
                       size="lg"
                       variant="outline"
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-4 rounded-none"
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
                       asChild
                     >
                       <a href={currentWork.videoUrl} target="_blank" rel="noopener noreferrer">

@@ -43,7 +43,7 @@ export default function Profile() {
               <div className="flex flex-col md:flex-row items-center gap-4">
                 <Button 
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 rounded-none min-w-[200px]"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
                   asChild
                 >
                   <Link href="/contact">
@@ -53,7 +53,7 @@ export default function Profile() {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 rounded-none min-w-[200px]"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
                   asChild
                 >
                   <Link href="/">

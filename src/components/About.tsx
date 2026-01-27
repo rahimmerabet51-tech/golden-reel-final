@@ -3,9 +3,9 @@ import { CheckCircle2 } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-dark-bg border-y border-white/5 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="section-padding bg-dark-bg border-y border-white/5 relative overflow-hidden">
+      <div className="container-responsive">
+        <div className="grid-responsive-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -20,10 +20,10 @@ export function About() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-black/70 backdrop-blur-sm p-4 border border-primary/30">
-                  <p className="text-primary text-sm font-semibold mb-1">Rahim Merabet</p>
-                  <p className="text-white/80 text-sm">Cinematic Visual Storyteller</p>
+              <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
+                <div className="bg-black/70 backdrop-blur-sm p-3 md:p-4 border border-primary/30">
+                  <p className="text-primary text-xs md:text-sm font-semibold mb-1">Rahim Merabet</p>
+                  <p className="text-white/80 text-xs md:text-sm">Cinematic Visual Storyteller</p>
                 </div>
               </div>
             </div>
@@ -35,16 +35,16 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-primary uppercase tracking-[0.2em] text-sm font-semibold mb-4 block">
+            <span className="text-primary uppercase tracking-[0.2em] text-xs md:text-sm font-semibold mb-3 md:mb-4 block">
               Rahim Merabet
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+            <h2 className="subheading-responsive font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
               Professional Videographer & Photographer
             </h2>
-            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+            <p className="text-muted-foreground text-responsive mb-4 md:mb-6 leading-relaxed">
               Rahim Merabet is a professional Videographer & Photographer based in Algiers. Currently Audiovisual Specialist at Laboratoires Merinal, he has collaborated with major brands like La Vache Qui Rit and musical groups like El Dey.
             </p>
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+            <p className="text-muted-foreground text-responsive mb-6 md:mb-8 leading-relaxed">
               With 5+ years of experience and over 100 completed projects, I specialize in high-end cinematic production for clients who demand excellence. My work is defined by professionalism, trust, and a commitment to capturing the essence of luxury in every frame.
             </p>
 

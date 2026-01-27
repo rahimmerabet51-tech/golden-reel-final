@@ -40,6 +40,62 @@
     font-family: 'Playfair Display', serif;
     @apply tracking-tight;
   }
+
+  /* Responsive typography base */
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+  }
+  
+  h4 {
+    @apply text-lg md:text-xl lg:text-2xl xl:text-3xl;
+  }
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .container-responsive {
+    @apply px-4 md:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto;
+  }
+  
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20 xl:py-24;
+  }
+  
+  .section-padding-sm {
+    @apply py-8 md:py-12 lg:py-16 xl:py-20;
+  }
+  
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8;
+  }
+  
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8;
+  }
+  
+  .button-responsive {
+    @apply w-full md:w-auto px-6 py-3 md:px-8 md:py-4 text-sm md:text-base;
+  }
+  
+  .text-responsive {
+    @apply text-sm md:text-base lg:text-lg;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+  
+  .subheading-responsive {
+    @apply text-lg md:text-xl lg:text-2xl xl:text-3xl;
+  }
 }
 
 /* Custom Scrollbar */

@@ -8,41 +8,41 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section id="hero" className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2564&auto=format&fit=crop"
           alt="Cinematic Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover bg-cover bg-center"
         />
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
-      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-20 text-center container-responsive">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-sm tracking-[0.2em] uppercase mb-6 bg-black/50 backdrop-blur-sm shadow-lg">
+          <span className="inline-block py-2 px-4 border border-primary/50 text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6 md:mb-8 bg-black/50 backdrop-blur-sm shadow-lg">
             Algeria's Premier Production
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight">
+          <h1 className="heading-responsive font-serif font-bold text-white mb-6 md:mb-8 leading-tight">
             Turning Moments into<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-200 to-primary">
               Cinematic Memories
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+          <p className="text-responsive text-white/80 max-w-2xl mx-auto mb-8 md:mb-10 font-light leading-relaxed">
             Weddings, Events, Corporate & Commercial Visuals. Specialized in premium cinematic storytelling for elite clients in Algeria.
           </p>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 rounded-none min-w-[200px]"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
               onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
               View Portfolio
@@ -50,7 +50,7 @@ export function Hero() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 rounded-none min-w-[200px]"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
               onClick={() => window.open("https://wa.me/213000000000", "_blank")}
             >
               Contact via WhatsApp
