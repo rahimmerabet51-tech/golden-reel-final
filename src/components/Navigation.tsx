@@ -38,12 +38,50 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-2xl md:text-3xl font-serif font-bold italic tracking-tighter text-white"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative group"
         >
-          R <span className="text-primary">motion</span>
-        </Link>
+          <Link
+            href="/"
+            className="flex flex-col items-start"
+          >
+            <div className="flex items-baseline">
+              <motion.span 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-2xl md:text-3xl font-serif font-bold text-white"
+              >
+                R
+              </motion.span>
+              <motion.span 
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-xl md:text-2xl font-sans font-light tracking-wider text-white ml-1"
+              >
+                motion
+              </motion.span>
+            </div>
+            <motion.span 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-xs font-sans tracking-[0.3em] text-white/60 uppercase"
+            >
+              DESIGN & DÉVELOPPEMENT CINÉMATIQUE
+            </motion.span>
+          </Link>
+          <motion.div 
+            initial={{ width: 0 }}
+            whileHover={{ width: "100%" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="h-px bg-white origin-left"
+          />
+        </motion.div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">

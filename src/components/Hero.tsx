@@ -26,36 +26,64 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block py-2 px-4 border border-primary/50 text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-6 md:mb-8 bg-black/50 backdrop-blur-sm shadow-lg">
-            Algeria's Premier Production
-          </span>
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="inline-block py-2 px-4 border border-white/30 text-white text-xs md:text-sm tracking-[0.3em] uppercase mb-6 md:mb-8 bg-black/30 backdrop-blur-sm"
+          >
+            DESIGN & DÉVELOPPEMENT CINÉMATIQUE
+          </motion.span>
           <h1 className="heading-responsive font-serif font-bold text-white mb-6 md:mb-8 leading-tight">
-            Turning Moments into<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-200 to-primary">
-              Cinematic Memories
-            </span>
+            <motion.span
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              L'art du mouvement
+            </motion.span>
+            <br />
+            <motion.span 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-white"
+            >
+              numérique.
+            </motion.span>
           </h1>
-          <p className="text-responsive text-white/80 max-w-2xl mx-auto mb-8 md:mb-10 font-light leading-relaxed">
-            Weddings, Events, Corporate & Commercial Visuals. Specialized in premium cinematic storytelling for elite clients in Algeria.
-          </p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="text-responsive text-white/80 max-w-2xl mx-auto mb-8 md:mb-10 font-light leading-relaxed"
+          >
+            Création d'expériences visuelles cinématiques de luxe pour les marques d'élite. 
+            Spécialisés en production numérique haut de gamme à Alger.
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
             <Button 
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
+              className="bg-white text-black hover:bg-gray-100 border border-white shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
               onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
-              View Portfolio
+              Voir Portfolio
             </Button>
             <Button 
               size="lg"
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive"
+              className="border-white text-white hover:bg-white hover:text-black hover:border-white shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
               onClick={() => window.open("https://wa.me/213000000000", "_blank")}
             >
-              Contact via WhatsApp
+              Contactez-nous
             </Button>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
