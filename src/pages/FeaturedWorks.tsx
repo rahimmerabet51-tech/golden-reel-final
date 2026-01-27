@@ -16,7 +16,7 @@ export default function FeaturedWorks() {
       category: "Corporate",
       client: "Laboratoires Merinal",
       year: "2024",
-      thumbnail: "/attached_assets/FEATURED WORKS1.png",
+      thumbnail: "/FEATURED WORKS1.png",
       description: "Corporate branding film showcasing the pharmaceutical excellence and innovation at Laboratoires Merinal.",
       videoUrl: "https://www.instagram.com/reel/DTaSzyOiC8O/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
       tags: ["Corporate", "Branding", "Pharmaceutical"]

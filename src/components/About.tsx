@@ -15,7 +15,7 @@ export function About() {
           >
             <div className="relative z-10 border border-primary/20 p-2 aspect-[3/4] overflow-hidden rounded-lg">
               <img 
-                src="/attached_assets/rahimgold2.jpeg"
+                src="/rahimgold2.jpeg"
                 alt="Rahim Merabet - Professional Videographer & Photographer"
                 className="w-full h-full object-cover"
               />

@@ -71,7 +71,7 @@ export default function Profile() {
             >
               <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-primary/30">
                 <img 
-                  src="/attached_assets/rahimgold.jpeg"
+                  src="/rahimgold.jpeg"
                   alt="Rahim Merabet - Professional Videographer & Photographer"
                   className="w-full h-full object-cover"
                 />
