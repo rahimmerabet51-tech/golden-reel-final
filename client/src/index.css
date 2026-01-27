@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 4%; /* #0a0a0a - Very dark gray/black */
+  --foreground: 46 8% 90%; /* Soft white/gold tint */
+  
+  --primary: 46 65% 52%; /* #D4AF37 - Gold */
+  --primary-foreground: 0 0% 0%; /* Black text on gold */
+  
+  --secondary: 0 0% 9%; /* Slightly lighter black for cards */
+  --secondary-foreground: 46 8% 90%;
+  
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  
+  --accent: 46 65% 52%;
+  --accent-foreground: 0 0% 0%;
+  
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 46 65% 52%;
+  
+  --radius: 0rem; /* Sharp corners for luxury feel */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply tracking-tight;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+.text-gold {
+  color: hsl(var(--primary));
+}
+
+.bg-gold {
+  background-color: hsl(var(--primary));
+}
+
+.border-gold {
+  border-color: hsl(var(--primary));
+}
+
+/* Client logo scrolling animation */
+@keyframes loop-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-loop-scroll {
+  animation: loop-scroll 30s linear infinite;
+}
+.animate-loop-scroll:hover {
+  animation-play-state: paused;
+}
