@@ -9,7 +9,7 @@ import { Video, Trash2, Plus, Upload, ArrowLeft, Shield } from "lucide-react";
 import { Video as VideoType, InsertVideo } from "../../../shared/schema";
 
 // Admin access control - only Rahim can access
-const ADMIN_PIN = "GOLDEN_KEY";
+const ADMIN_PIN = "RAHIMDEY";
 
 export default function AdminPanel() {
   const [location, setLocation] = useLocation();

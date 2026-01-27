@@ -52,8 +52,7 @@ export function About() {
               {[
                 "5+ Years Experience",
                 "100+ Projects Completed",
-                "Sony A7S III, DJI RS3, Mavic 3 Pro",
-                "4K Cinema Quality Production"
+                "Professional Cinematic Production"
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="text-primary w-5 h-5" />

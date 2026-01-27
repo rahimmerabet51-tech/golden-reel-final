@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -6,84 +6,65 @@ import { VideoDisplay } from "@/components/VideoDisplay";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Play, Calendar, User, ArrowRight, Filter } from "lucide-react";
+import { fetchWorks } from "@/lib/api";
+import type { Work } from "@/lib/supabase";
 
 export default function FeaturedWorks() {
-  // Mock featured works data
-  const featuredWorks = [
-    {
-      id: 1,
-      title: "Laboratoires Merinal Corporate Film",
-      category: "Corporate",
-      client: "Laboratoires Merinal",
-      year: "2024",
-      thumbnail: "/FEATURED WORKS1.png",
-      description: "Corporate branding film showcasing the pharmaceutical excellence and innovation at Laboratoires Merinal.",
-      videoUrl: "https://www.instagram.com/reel/DTaSzyOiC8O/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
-      tags: ["Corporate", "Branding", "Pharmaceutical"]
-    },
-    {
-      id: 2,
-      title: "El Dey Group - Music Video",
-      category: "Music Video",
-      client: "El Dey Group",
-      year: "2023",
-      thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000",
-      description: "Dynamic music video production for El Dey Group's latest single, featuring cinematic storytelling and artistic visuals.",
-      videoUrl: "https://www.instagram.com/reel/DTS_EUKjOGc/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
-      tags: ["Music", "Video", "Algerian Artist"]
-    },
-    {
-      id: 3,
-      title: "La Vache Qui Rit Commercial",
-      category: "Commercial",
-      client: "La Vache Qui Rit (Groupe Bel)",
-      year: "2024",
-      thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1000",
-      description: "Television commercial for La Vache Qui Rit, highlighting the brand's family-friendly values and quality products.",
-      videoUrl: "#",
-      tags: ["Commercial", "TV", "Food & Beverage"]
-    },
-    {
-      id: 4,
-      title: "Vivalor Luxury Event Coverage",
-      category: "Event",
-      client: "Vivalor",
-      year: "2023",
-      thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000",
-      description: "Comprehensive event coverage for Vivalor's luxury product launch, capturing the elegance and sophistication of the occasion.",
-      videoUrl: "#",
-      tags: ["Event", "Luxury", "Product Launch"]
-    },
-    {
-      id: 5,
-      title: "Algerian Wedding Cinematography",
-      category: "Wedding",
-      client: "Private Client",
-      year: "2024",
-      thumbnail: "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1000",
-      description: "Romantic wedding cinematography capturing the beauty and emotion of a traditional Algerian wedding celebration.",
-      videoUrl: "#",
-      tags: ["Wedding", "Cinematography", "Cultural"]
-    },
-    {
-      id: 6,
-      title: "Documentary: Algiers Street Art",
-      category: "Documentary",
-      client: "Independent Project",
-      year: "2023",
-      thumbnail: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000",
-      description: "Short documentary exploring the vibrant street art scene in Algiers, featuring local artists and their creative process.",
-      videoUrl: "#",
-      tags: ["Documentary", "Art", "Culture"]
-    }
-  ];
+  const [works, setWorks] = useState<Work[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const categories = ["All", "Wedding", "Corporate", "Music Video", "Commercial", "Event", "Documentary"];
+  const categories = ["All", "Wedding", "Corporate", "Music Video", "Commercial", "Event", "Documentary", "AI"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  useEffect(() => {
+    const loadWorks = async () => {
+      try {
+        const data = await fetchWorks();
+        setWorks(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load works');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadWorks();
+  }, []);
+
   const filteredWorks = selectedCategory === "All" 
-    ? featuredWorks 
-    : featuredWorks.filter(work => work.category === selectedCategory);
+    ? works 
+    : works.filter(work => work.category === selectedCategory);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white/60">Loading featured works...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center max-w-2xl px-6">
+          <h1 className="text-4xl font-display font-black text-white mb-4">
+            Error <span className="text-primary">Loading</span>
+          </h1>
+          <p className="text-slate-200 mb-8">{error}</p>
+          <Button 
+            className="bg-primary text-black hover:bg-primary/90 font-display font-bold"
+            onClick={() => window.location.reload()}
+          >
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div 
@@ -104,17 +85,17 @@ export default function FeaturedWorks() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-sm tracking-[0.2em] uppercase mb-4 bg-black/30 backdrop-blur-sm">
-              Portfolio Showcase
+            <span className="inline-block py-2 px-4 border border-white/30 text-white text-xs md:text-sm tracking-[0.3em] uppercase mb-6 md:mb-8 bg-black/30 backdrop-blur-sm">
+              PORTFOLIO SÉLECTION
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 leading-tight">
-              Featured<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-200 to-primary">
-                Works
+            <h1 className="heading-responsive font-display font-black text-white mb-6 md:mb-8 leading-tight">
+              Travaux<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-white">
+                Vedettes
               </span>
             </h1>
-            <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-6 font-light leading-relaxed">
-              A curated selection of my best work, from corporate films and music videos to wedding cinematography and documentary projects.
+            <p className="text-responsive text-slate-200 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed">
+              Une sélection de mes meilleurs travaux, des films d'entreprise et vidéos musicales aux cinématographies de mariage et projets documentaires.
             </p>
           </motion.div>
         </div>
@@ -160,7 +141,7 @@ export default function FeaturedWorks() {
                 {/* Thumbnail */}
                 <div className="relative aspect-video overflow-hidden">
                   <img 
-                    src={work.thumbnail}
+                    src={work.file_url}
                     alt={work.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -189,10 +170,10 @@ export default function FeaturedWorks() {
 
                 {/* Content */}
                 <div className="p-6 bg-black/50">
-                  <h3 className="text-xl font-serif text-white mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
                     {work.title}
                   </h3>
-                  <p className="text-white/70 text-sm mb-4 line-clamp-2">
+                  <p className="text-slate-200 text-sm mb-4 line-clamp-2 leading-relaxed">
                     {work.description}
                   </p>
                   
@@ -211,7 +192,7 @@ export default function FeaturedWorks() {
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
-                    {work.tags.map((tag) => (
+                    {work.tags?.map((tag) => (
                       <span 
                         key={tag}
                         className="px-2 py-1 bg-white/10 text-white/60 text-xs rounded-none"
@@ -256,11 +237,11 @@ export default function FeaturedWorks() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
-              Latest <span className="text-primary">Uploads</span>
+            <h2 className="heading-responsive font-display font-black text-white mb-6 md:mb-8">
+              Derniers <span className="text-primary">Téléchargements</span>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Recently uploaded videos from our collection, showcasing the latest work and projects.
+            <p className="text-slate-200 max-w-2xl mx-auto leading-relaxed">
+              Vidéos récemment téléchargées de notre collection, présentant les derniers travaux et projets.
             </p>
           </motion.div>
 

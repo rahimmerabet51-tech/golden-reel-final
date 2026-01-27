@@ -53,7 +53,7 @@ export function Navigation() {
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-2xl md:text-3xl font-serif font-bold text-white"
+                className="text-2xl md:text-3xl font-display font-black text-primary"
               >
                 R
               </motion.span>
@@ -61,7 +61,7 @@ export function Navigation() {
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl font-sans font-light tracking-wider text-white ml-1"
+                className="text-xl md:text-2xl font-display font-black tracking-wider text-white ml-1"
               >
                 motion
               </motion.span>
@@ -89,16 +89,17 @@ export function Navigation() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm uppercase tracking-widest text-white/80 hover:text-primary transition-colors duration-200"
+              className="text-sm font-display font-bold uppercase tracking-widest text-white/80 hover:text-white relative group transition-colors duration-200"
             >
               {link.name}
+              <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
           <Button 
-            className="bg-primary text-black hover:bg-primary/90 font-semibold rounded-none px-6"
+            className="bg-primary text-black hover:bg-primary/90 font-display font-bold rounded-none px-6"
             asChild
           >
-            <Link href="/contact">CONTACT FOR CUSTOM WORK</Link>
+            <Link href="/contact">CONTACT</Link>
           </Button>
         </div>
 
@@ -125,17 +126,18 @@ export function Navigation() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-serif text-white/90 hover:text-primary transition-colors"
+                  className="text-lg font-display font-bold text-white/90 hover:text-white relative group transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
               <Button 
-                className="bg-primary text-black hover:bg-primary/90 font-semibold rounded-none px-6 w-full"
+                className="bg-primary text-black hover:bg-primary/90 font-display font-bold rounded-none px-6 w-full"
                 asChild
               >
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT FOR CUSTOM WORK</Link>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
               </Button>
             </div>
           </motion.div>

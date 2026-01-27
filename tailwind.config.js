@@ -37,6 +37,7 @@ export default {
       fontFamily: {
         'serif': ['Playfair Display', 'serif'],
         'sans': ['Inter', 'sans-serif'],
+        'display': ['Montserrat', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },
       borderRadius: {

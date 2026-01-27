@@ -32,30 +32,36 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    @apply bg-background text-slate-200 antialiased selection:bg-primary/30 selection:text-primary-foreground;
     font-family: 'Inter', sans-serif;
+    line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     @apply tracking-tight;
   }
 
-  /* Responsive typography base */
+  /* Responsive typography base with bolder weights */
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+    @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black;
   }
   
   h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold;
   }
   
   h3 {
-    @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+    @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold;
   }
   
   h4 {
-    @apply text-lg md:text-xl lg:text-2xl xl:text-3xl;
+    @apply text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold;
+  }
+  
+  /* Better readability for body text */
+  p {
+    @apply leading-relaxed;
   }
 }
 

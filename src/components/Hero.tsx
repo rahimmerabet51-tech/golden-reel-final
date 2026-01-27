@@ -34,7 +34,7 @@ export function Hero() {
           >
             DESIGN & DÉVELOPPEMENT CINÉMATIQUE
           </motion.span>
-          <h1 className="heading-responsive font-serif font-bold text-white mb-6 md:mb-8 leading-tight">
+          <h1 className="heading-responsive font-display font-black text-white mb-6 md:mb-8 leading-tight">
             <motion.span
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
-            className="text-responsive text-white/80 max-w-2xl mx-auto mb-8 md:mb-10 font-light leading-relaxed"
+            className="text-responsive text-slate-200 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
           >
             Création d'expériences visuelles cinématiques de luxe pour les marques d'élite. 
             Spécialisés en production numérique haut de gamme à Alger.
@@ -70,7 +70,7 @@ export function Hero() {
           >
             <Button 
               size="lg"
-              className="bg-white text-black hover:bg-gray-100 border border-white shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
               onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
               Voir Portfolio

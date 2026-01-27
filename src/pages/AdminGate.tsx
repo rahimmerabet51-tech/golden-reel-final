@@ -11,7 +11,7 @@ export default function AdminGate() {
     e.preventDefault();
     
     // Simple hardcoded PIN check
-    if (pin === "GOLDEN_KEY") {
+    if (pin === "RAHIMDEY") {
       // Store access in sessionStorage
       sessionStorage.setItem("adminAccess", "granted");
       setLocation("/admin/upload");
