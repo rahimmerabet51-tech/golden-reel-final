@@ -1,7 +1,29 @@
 import { supabase, Work } from './supabase'
 
+// Helper function to sanitize filename
+function sanitizeFilename(filename: string): string {
+  // Remove accents and normalize
+  const normalized = filename
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+    .toLowerCase();
+  
+  // Replace spaces with dashes and remove special characters except alphanumeric, dots, and dashes
+  const sanitized = normalized
+    .replace(/\s+/g, '-') // Replace spaces with dashes
+    .replace(/[^a-z0-9.-]/g, '') // Remove special characters except alphanumeric, dots, and dashes
+    .replace(/-+/g, '-') // Replace multiple dashes with single dash
+    .replace(/^-|-$/g, ''); // Remove leading/trailing dashes
+  
+  return sanitized;
+}
+
 export async function uploadFile(file: File, bucket: string = 'portfolio-media') {
-  const fileName = `${Date.now()}-${file.name}`
+  const timestamp = Date.now();
+  const originalName = file.name;
+  const sanitizedOriginalName = sanitizeFilename(originalName);
+  const fileName = `${timestamp}-${sanitizedOriginalName}`;
+  
   const { data, error } = await supabase.storage
     .from(bucket)
     .upload(fileName, file, {
@@ -20,7 +42,8 @@ export async function uploadFile(file: File, bucket: string = 'portfolio-media')
   return {
     path: data.path,
     publicUrl,
-    fileName
+    fileName,
+    originalName
   }
 }
 

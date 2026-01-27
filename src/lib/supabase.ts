@@ -8,14 +8,11 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export interface Work {
   id?: string
   title: string
-  category: string
-  description: string
-  file_url: string
-  file_type: 'image' | 'video'
-  thumbnail_url?: string
+  url: string
+  type: 'image' | 'video'
+  description?: string
   client?: string
-  year?: string
-  tags?: string[]
+  category?: string
   created_at?: string
   updated_at?: string
 }

@@ -1,3 +1,6 @@
+import { Link } from "wouter";
+import { Lock } from "lucide-react";
+
 export function Footer() {
   return (
     <footer className="bg-black py-12 border-t border-white/10">
@@ -10,9 +13,18 @@ export function Footer() {
           <p className="text-white/40 text-xs tracking-wider uppercase">
             DESIGN & DÉVELOPPEMENT CINÉMATIQUE
           </p>
-          <p className="text-slate-200 text-sm mt-2">
-            © 2026 R motion. Tous droits réservés.
-          </p>
+          <div className="flex items-center gap-2 mt-2">
+            <p className="text-slate-200 text-sm">
+              © 2026 R motion. Tous droits réservés.
+            </p>
+            <Link
+              href="/login"
+              className="text-white/20 hover:text-primary transition-colors"
+              title="Admin Access"
+            >
+              <Lock className="w-3 h-3" />
+            </Link>
+          </div>
         </div>
         
         <div className="flex gap-8">
