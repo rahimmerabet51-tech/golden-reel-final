@@ -9,8 +9,16 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2564&auto=format&fit=crop"
+          alt="Cinematic Background"
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
 
       <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
         <motion.div

@@ -1,0 +1,109 @@
+Create a high-end luxury portfolio website for a professional videographer, photographer, and video editor based in Algeria.
+
+The client specializes in:
+- Wedding videography and photography
+- Event coverage (haflat, concerts, corporate events)
+- Corporate and commercial videos
+- Product photography and promotional videos for companies (including pharmaceutical companies)
+- Full video editing and post-production services
+
+Target audience:
+- High-class clients
+- Companies and brands
+- Wedding planners and professional event teams
+
+Website style:
+- Cinematic
+- Elegant
+- Minimal
+- Premium and professional
+- Designed to attract serious, high-budget clients
+
+Color palette:
+- Black background
+- Gold accents (subtle, not flashy)
+- White text for clarity
+
+Typography:
+- Modern, clean, professional
+- Large headings
+- Minimal text, strong visuals
+
+Layout:
+- One-page website
+- Smooth animations
+- Clean spacing
+- Focus on visuals (videos and images)
+
+Sections to include:
+
+1. Hero Section:
+- Full-width video background (showreel)
+- Dark cinematic overlay
+- Strong professional headline such as:
+  "Professional Video & Photo Production"
+- Subheadline:
+  "Weddings, Events, Corporate & Commercial Visuals"
+- Call-to-action buttons:
+  "View Portfolio"
+  "Contact via WhatsApp"
+
+2. About Section:
+- Short, professional description
+- Emphasize experience, professionalism, and trust
+- Mention collaboration with:
+  - Wedding teams
+  - Event organizers
+  - Companies and brands
+- Tone: confident, serious, premium
+
+3. Services Section:
+Display services with clean icons or cards:
+- Wedding Videography & Photography
+- Event Coverage
+- Corporate & Commercial Videos
+- Product Photography
+- Video Editing & Post-Production
+
+4. Portfolio Section:
+- Categorized gallery:
+  - Weddings
+  - Events
+  - Corporate
+  - Commercials
+- Large visuals
+- Minimal captions
+- Focus on quality and storytelling
+
+5. Clients & Brands Section:
+- Showcase logos or names of:
+  - Wedding teams
+  - Event companies
+  - Corporate clients
+  - Pharmaceutical companies
+- Section should build trust and credibility
+
+6. Testimonials Section:
+- Short professional testimonials
+- Emphasize reliability, quality, and professionalism
+
+7. Contact Section:
+- Simple and clean
+- WhatsApp button
+- Email address
+- Instagram link
+- Call-to-action:
+  "Let’s create something exceptional"
+
+Extra requirements:
+- Fully responsive (mobile, tablet, desktop)
+- Fast loading
+- SEO-friendly
+- Professional and premium feel
+- Suitable for international and corporate clients
+
+Language:
+- English (or French if needed)
+
+Overall goal:
+Create a luxury, cinematic portfolio website that positions the videographer as a high-end professional suitable for companies, brands, and premium clients.
