@@ -30,7 +30,8 @@ export function WorkCard({ work, onOpen, className = "" }: WorkCardProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`group relative overflow-hidden rounded-lg bg-black/50 border border-white/10 ${className}`}
+        className={`group relative overflow-hidden rounded-lg bg-black/50 border border-white/10 cursor-pointer ${className}`}
+        onClick={openModal}
       >
         {/* Cover Image */}
         <div className="aspect-video relative">
@@ -42,6 +43,15 @@ export function WorkCard({ work, onOpen, className = "" }: WorkCardProps) {
           
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          {/* Mobile Tap Indicator */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="bg-black/60 rounded-full p-4 transform transition-transform duration-300 group-hover:scale-110">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Content Overlay */}
@@ -49,6 +59,7 @@ export function WorkCard({ work, onOpen, className = "" }: WorkCardProps) {
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-6 flex flex-col justify-end"
+          onClick={(e) => e.stopPropagation()} // Prevent card click when clicking button
         >
           <h3 className="text-xl font-bold text-white mb-2">{work.title}</h3>
           {work.description && (
@@ -60,7 +71,7 @@ export function WorkCard({ work, onOpen, className = "" }: WorkCardProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={openModal}
-            className="bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-semibold py-2 px-6 rounded-none transition-all duration-300 shadow-lg hover:shadow-[#D4AF37]/25"
+            className="bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-semibold py-2 px-6 rounded-none transition-all duration-300 shadow-lg hover:shadow-[#D4AF37]/25 touch-target"
           >
             {work.type === 'video' ? 'VOIR LA VIDÉO' : 'VOIR LE PROJET'}
           </motion.button>
