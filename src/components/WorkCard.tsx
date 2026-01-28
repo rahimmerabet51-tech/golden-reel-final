@@ -44,12 +44,18 @@ export function WorkCard({ work, onOpen, className = "" }: WorkCardProps) {
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
-          {/* Mobile Tap Indicator */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="bg-black/60 rounded-full p-4 transform transition-transform duration-300 group-hover:scale-110">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          {/* Mobile Tap Indicator - Always visible on mobile, on hover on desktop */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30 md:bg-transparent md:group-hover:bg-black/30 transition-all duration-300">
+            <div className="bg-black/60 rounded-full p-4 transform transition-all duration-300 group-hover:scale-110 shadow-lg animate-pulse">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
+            </div>
+            {/* Mobile Tap Text */}
+            <div className="absolute bottom-4 left-0 right-0 text-center md:hidden">
+              <p className="text-white text-sm font-medium bg-black/60 inline-block px-3 py-1 rounded animate-pulse">
+                TAP TO WATCH
+              </p>
             </div>
           </div>
         </div>
