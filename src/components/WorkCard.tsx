@@ -51,11 +51,11 @@ export function WorkCard({ work, onOpen, className = "" }: WorkCardProps) {
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </div>
-            {/* Mobile Tap Text */}
+            {/* Mobile Tap Emoji */}
             <div className="absolute bottom-4 left-0 right-0 text-center md:hidden">
-              <p className="text-white text-sm font-medium bg-black/60 inline-block px-3 py-1 rounded animate-pulse">
-                TAP TO WATCH
-              </p>
+              <div className="bg-black/60 inline-block px-3 py-2 rounded-full animate-pulse">
+                <span className="text-2xl">👆</span>
+              </div>
             </div>
           </div>
         </div>
