@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 export function Hero() {
   const scrollToAbout = () => {
@@ -71,17 +72,21 @@ export function Hero() {
             <Button 
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
-              onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+              asChild
             >
-              Voir Portfolio
+              <Link href="/featured-works">
+                Voir Portfolio
+              </Link>
             </Button>
             <Button 
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-black hover:border-white shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
-              onClick={() => window.open("https://wa.me/213000000000", "_blank")}
+              asChild
             >
-              Contactez-nous
+              <Link href="/contact">
+                Contactez-nous
+              </Link>
             </Button>
           </motion.div>
         </motion.div>
