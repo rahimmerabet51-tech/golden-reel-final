@@ -23,7 +23,7 @@ export function Services() {
         <SectionHeading title="Services & Investment" subtitle="What We Offer" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {displayServices.map((service, idx) => {
+          {displayServices.map((service: any, idx: number) => {
             const Icon = icons[idx % icons.length];
             
             return (

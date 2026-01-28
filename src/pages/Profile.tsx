@@ -3,7 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ArrowRight, Mail, Phone, MapPin, Camera, Video, Calendar, Award } from "lucide-react";
+import { ArrowRight, Mail, Phone, Camera, Video, Calendar, Award } from "lucide-react";
 
 export default function Profile() {
   const services = [
@@ -22,15 +22,6 @@ export default function Profile() {
       title: "Événements Corporatifs",
       description: "Couverture complète de vos événements d'entreprise avec une approche cinématographique."
     }
-  ];
-
-  const featuredWorks = [
-    { id: 1, title: "Mariage Luxury", category: "Mariage", image: "/images/wedding-1.jpg" },
-    { id: 2, title: "Corporate Merinal", category: "Corporate", image: "/images/corporate-1.jpg" },
-    { id: 3, title: "El Dey Music Video", category: "Musique", image: "/images/music-1.jpg" },
-    { id: 4, title: "Event Vivalor", category: "Événement", image: "/images/event-1.jpg" },
-    { id: 5, title: "Portrait Artistique", category: "Portrait", image: "/images/portrait-1.jpg" },
-    { id: 6, title: "Documentaire Alger", category: "Documentaire", image: "/images/doc-1.jpg" }
   ];
 
   return (

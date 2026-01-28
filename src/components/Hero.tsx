@@ -30,48 +30,45 @@ export function Hero() {
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="inline-block py-2 px-4 border border-white/30 text-white text-xs md:text-sm tracking-[0.3em] uppercase mb-6 md:mb-8 bg-black/30 backdrop-blur-sm"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-6 sm:mb-8"
           >
-            DESIGN & DÉVELOPPEMENT CINÉMATIQUE
-          </motion.span>
-          <h1 className="heading-responsive font-display font-black text-white mb-6 md:mb-8 leading-tight">
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-            >
-              L'art du mouvement
-            </motion.span>
-            <br />
-            <motion.span 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-white"
-            >
-              numérique.
-            </motion.span>
-          </h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            <span className="inline-block py-1 px-3 sm:py-2 sm:px-4 border border-primary/50 text-primary text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-6 bg-black/30 backdrop-blur-sm">
+              Visual Storyteller & Filmmaker
+            </span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-            className="text-responsive text-slate-200 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="hero-title-responsive font-display font-black text-white mb-4 sm:mb-6 leading-tight"
           >
-            Création d'expériences visuelles cinématiques de luxe pour les marques d'élite. 
-            Spécialisés en production numérique haut de gamme à Alger.
+            Crafting Visual
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-200 to-primary block sm:inline">
+              {" "}Stories
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="hero-subtitle-responsive text-white/80 max-w-2xl mx-auto mb-6 sm:mb-8 font-light leading-relaxed padding-responsive-x"
+          >
+            Transforming moments into cinematic experiences through the art of visual storytelling. 
+            From intimate weddings to grand corporate productions.
           </motion.p>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <Button 
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
+              className="button-responsive-lg bg-primary text-primary-foreground hover:bg-primary/90 border border-primary shadow-lg hover:shadow-xl transition-all duration-300 font-light tracking-wide touch-target"
               asChild
             >
               <Link href="/featured-works">
@@ -81,7 +78,7 @@ export function Hero() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black hover:border-white shadow-lg hover:shadow-xl transition-all duration-300 button-responsive font-light tracking-wide"
+              className="button-responsive-lg border-white text-white hover:bg-white hover:text-black hover:border-white shadow-lg hover:shadow-xl transition-all duration-300 font-light tracking-wide touch-target"
               asChild
             >
               <Link href="/contact">
