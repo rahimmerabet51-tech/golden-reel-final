@@ -35,11 +35,148 @@
     @apply bg-background text-slate-200 antialiased selection:bg-primary/30 selection:text-primary-foreground;
     font-family: 'Inter', sans-serif;
     line-height: 1.7;
+    
+    /* Global background with gold smoke texture */
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url('/bbb.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
+  /* Gold accents for black backgrounds */
+  .bg-black {
+    background-image: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.03) 0%, 
+      rgba(0, 0, 0, 1) 25%, 
+      rgba(0, 0, 0, 1) 75%, 
+      rgba(212, 175, 55, 0.03) 100%
+    );
+  }
+
+  .bg-black\/50 {
+    background-image: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.05) 0%, 
+      rgba(0, 0, 0, 0.5) 25%, 
+      rgba(0, 0, 0, 0.5) 75%, 
+      rgba(212, 175, 55, 0.05) 100%
+    );
+  }
+
+  .bg-black\/70 {
+    background-image: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.04) 0%, 
+      rgba(0, 0, 0, 0.7) 25%, 
+      rgba(0, 0, 0, 0.7) 75%, 
+      rgba(212, 175, 55, 0.04) 100%
+    );
+  }
+
+  .bg-black\/80 {
+    background-image: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.03) 0%, 
+      rgba(0, 0, 0, 0.8) 25%, 
+      rgba(0, 0, 0, 0.8) 75%, 
+      rgba(212, 175, 55, 0.03) 100%
+    );
+  }
+
+  .bg-black\/90 {
+    background-image: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.02) 0%, 
+      rgba(0, 0, 0, 0.9) 25%, 
+      rgba(0, 0, 0, 0.9) 75%, 
+      rgba(212, 175, 55, 0.02) 100%
+    );
+  }
+
+  /* Gold border accents */
+  .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+  }
+
+  .border-white\/20 {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.08);
+  }
+
+  /* Gold text shadow for white text on black */
+  .text-white {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+  }
+
+  .text-white\/80 {
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.08);
+  }
+
+  .text-white\/60 {
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.06);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     @apply tracking-tight;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  }
+
+  /* Gold accents for input fields and interactive elements */
+  input:focus, 
+  textarea:focus, 
+  select:focus {
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3), 
+                0 0 20px rgba(212, 175, 55, 0.1);
+  }
+
+  /* Gold hover effects */
+  button:hover {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+  }
+
+  /* Gold accent for cards and containers */
+  .border {
+    border-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+
+  .border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(212, 175, 55, 0.1) 50%, 
+      transparent 70%
+    );
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .border:hover::before {
+    opacity: 1;
+  }
+
+  /* Subtle gold glow for sections */
+  section {
+    position: relative;
+  }
+
+  section::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, 
+      transparent 40%, 
+      rgba(212, 175, 55, 0.02) 50%, 
+      transparent 60%
+    );
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   /* Responsive typography base with bolder weights */

@@ -1,0 +1,16 @@
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-container {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-container .react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

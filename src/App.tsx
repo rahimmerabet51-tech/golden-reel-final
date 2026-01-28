@@ -13,6 +13,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import LoginPage from "@/pages/LoginPage";
 import AdminPanel from "@/pages/AdminPanel";
+import FeaturedWorks from "@/pages/FeaturedWorks";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -21,6 +22,7 @@ function Router() {
       <Route path="/" component={PortfolioHome} />
       <Route path="/profile" component={Profile} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/featured-works" component={FeaturedWorks} />
       <Route path="/video/:id" component={VideoPlayer} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />

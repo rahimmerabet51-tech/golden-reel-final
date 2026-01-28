@@ -13,6 +13,7 @@ export interface Work {
   description?: string
   client?: string
   category?: string
+  thumbnail_url?: string
   created_at?: string
   updated_at?: string
 }

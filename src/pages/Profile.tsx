@@ -44,14 +44,32 @@ export default function Profile() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-black"></div>
+        {/* Gold smoke background image */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+              url('/bbb.jpg')
+            `,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        
+        {/* Additional gold accent overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/5 via-transparent to-[#D4AF37]/10"></div>
         
         <div className="relative z-10 px-6 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+            {/* Text Content - 3 columns (60%) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-3"
             >
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
@@ -113,13 +131,17 @@ export default function Profile() {
               </motion.div>
             </motion.div>
 
+            {/* Image - 2 columns (40%) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative"
+              className="relative lg:max-w-lg mx-auto lg:col-span-2"
             >
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-white/20">
+              {/* Gold glow backdrop that blends with background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 via-transparent to-[#D4AF37]/10 rounded-lg blur-xl"></div>
+              
+              <div className="relative aspect-[3/4] overflow-hidden rounded-lg border-2 border-[#D4AF37] shadow-xl shadow-[#D4AF37]/20">
                 <img 
                   src="/images/rahim-profile.jpg"
                   alt="Rahim Merabet - Visual Storyteller & Filmmaker"
@@ -130,8 +152,8 @@ export default function Profile() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-black/70 backdrop-blur-sm p-4 border border-white/20">
-                    <p className="text-primary text-sm font-display font-bold mb-1">Rahim Merabet</p>
+                  <div className="bg-black/80 backdrop-blur-sm p-4 border border-[#D4AF37]/50">
+                    <p className="text-[#D4AF37] text-sm font-display font-bold mb-1">Rahim Merabet</p>
                     <p className="text-white/80 text-sm">Visual Storyteller & Filmmaker</p>
                   </div>
                 </div>
@@ -278,71 +300,6 @@ export default function Profile() {
         </div>
       </section>
 
-      {/* Featured Works Masonry Grid */}
-      <section className="py-20 px-6 border-t border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-xs tracking-[0.2em] uppercase mb-4">
-              PORTFOLIO
-            </span>
-            <h2 className="heading-responsive font-display font-black text-white mb-6">
-              Travaux <span className="text-primary">Vedettes</span>
-            </h2>
-          </motion.div>
-
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {featuredWorks.map((work, index) => (
-              <motion.div
-                key={work.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="break-inside-avoid group"
-              >
-                <div className="relative overflow-hidden rounded-lg border border-white/10 hover:border-primary/50 transition-all duration-300">
-                  <div className={`aspect-${index % 3 === 0 ? 'square' : index % 3 === 1 ? 'video' : 'portrait'} relative`}>
-                    <img 
-                      src={work.image}
-                      alt={work.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://images.unsplash.com/photo-${1500000000000 + index * 100}?w=400&h=300&fit=crop`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="px-3 py-1 bg-primary/90 text-black text-xs font-display font-bold rounded">
-                        {work.category}
-                      </span>
-                      <h3 className="text-white font-display font-bold mt-2">{work.title}</h3>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button 
-              size="lg"
-              className="bg-primary text-black hover:bg-primary/90 font-display font-bold border border-primary shadow-lg hover:shadow-xl transition-all duration-300"
-              asChild
-            >
-              <Link href="/featured-works">
-                Voir Tout le Portfolio <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section className="py-20 px-6 border-t border-white/10">
         <div className="max-w-4xl mx-auto text-center">
@@ -353,31 +310,27 @@ export default function Profile() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="heading-responsive font-display font-black text-white mb-6">
-              Collaborons <span className="text-primary">Ensemble</span>
+              Collaborons <span className="text-[#D4AF37]">Ensemble</span>
             </h2>
             <p className="text-lg text-slate-200 mb-8 leading-relaxed">
               Transformons vos idées en réalités visuelles extraordinaires. 
               Contactez-moi pour discuter de votre projet et donner vie à votre vision.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12">
               <div className="flex items-center gap-3 text-slate-200">
-                <Mail className="w-5 h-5 text-primary" />
-                <span>contact@rahimmerabet.dz</span>
+                <Mail className="w-5 h-5 text-[#D4AF37]" />
+                <span>rahimmerabet51@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-slate-200">
-                <Phone className="w-5 h-5 text-primary" />
-                <span>+213 000 000 000</span>
-              </div>
-              <div className="flex items-center gap-3 text-slate-200">
-                <MapPin className="w-5 h-5 text-primary" />
-                <span>Alger, Algérie</span>
+                <Phone className="w-5 h-5 text-[#D4AF37]" />
+                <span>+213 660 951 299</span>
               </div>
             </div>
             
             <Button 
               size="lg"
-              className="bg-primary text-black hover:bg-primary/90 font-display font-bold border border-primary shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-display font-bold shadow-lg hover:shadow-[#D4AF37]/25 transition-all duration-300"
               asChild
             >
               <Link href="/contact">

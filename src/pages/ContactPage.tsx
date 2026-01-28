@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight, Mail, Phone, MapPin, Clock, Instagram, Facebook, Linkedin, MessageCircle } from "lucide-react";
+import emailjs from 'emailjs-com';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,9 @@ export default function ContactPage() {
   });
   
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -24,19 +28,53 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 5000);
+    setIsLoading(true);
+    setShowError(false);
+    setShowSuccess(false);
     
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      serviceType: "",
-      projectDescription: ""
-    });
+    try {
+      const templateParams = {
+        from_name: formData.fullName,
+        reply_to: formData.email,
+        service_type: formData.serviceType,
+        message: formData.projectDescription
+      };
+
+      const result = await emailjs.send(
+        'service_ba9heac',
+        'template_5jddso5',
+        templateParams,
+        'cTEJ8RML05ryS3y5F'
+      );
+
+      console.log('Email sent successfully:', result.text);
+      
+      // Clear form fields
+      setFormData({
+        fullName: "",
+        email: "",
+        serviceType: "",
+        projectDescription: ""
+      });
+      
+      // Show success message
+      setShowSuccess(true);
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
+      
+    } catch (error: any) {
+      console.error('Failed to send email:', error);
+      setErrorMessage('Échec de l\'envoi. Veuillez réessayer plus tard.');
+      setShowError(true);
+      
+      // Hide error message after 5 seconds
+      setTimeout(() => setShowError(false), 5000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -44,13 +82,36 @@ export default function ContactPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-dark-bg text-white"
+      className="min-h-screen text-white"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url('/bbb.jpg')
+        `,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
       <Navigation />
       
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-black/90"></div>
+        {/* Gold smoke background image */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+              url('/bbb.jpg')
+            `,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
         
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto py-12">
           <motion.div
@@ -58,17 +119,17 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block py-1 px-3 border border-primary/50 text-primary text-sm tracking-[0.2em] uppercase mb-4 bg-black/30 backdrop-blur-sm">
-              Get In Touch
+            <span className="inline-block py-1 px-3 border border-[#D4AF37]/50 text-[#D4AF37] text-sm tracking-[0.2em] uppercase mb-4 bg-black/30 backdrop-blur-sm">
+              Contactez-Nous
             </span>
             <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 leading-tight">
-              Let's Create<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-200 to-primary">
-                Something Amazing
+              Créons<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-yellow-200 to-[#D4AF37]">
+                Quelque Chose d'Incroyable
               </span>
             </h1>
             <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-6 font-light leading-relaxed">
-              Available for commissions across Algeria and internationally. Let's discuss your vision and bring it to life.
+              Disponible pour des commissions en Algérie et à l'international. Discutons de votre vision et donnons-lui vie.
             </p>
           </motion.div>
         </div>
@@ -87,22 +148,36 @@ export default function ContactPage() {
               className="lg:col-span-2"
             >
               <div className="bg-black/50 border border-white/10 p-8">
-                <h2 className="text-3xl font-serif text-primary mb-8">Send Us a Message</h2>
+                <h2 className="text-3xl font-serif text-[#D4AF37] mb-8">Envoyer email</h2>
                 
                 {showSuccess && (
                   <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-6 p-4 bg-primary/20 border border-primary/50 rounded-none"
+                    className="mb-6 p-6 text-center"
                   >
-                    <p className="text-primary font-semibold">Thank you for your message! We'll get back to you soon.</p>
+                    <p className="text-[#D4AF37] text-lg font-semibold text-center shadow-lg shadow-[#D4AF37]/30">
+                      Merci ! Votre message a été envoyé avec succès. Rahim vous contactera bientôt.
+                    </p>
+                  </motion.div>
+                )}
+
+                {showError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-6 text-center"
+                  >
+                    <p className="text-orange-500 text-lg font-semibold text-center">
+                      {errorMessage}
+                    </p>
                   </motion.div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="fullName" className="block text-white/80 text-sm font-medium mb-2">
-                      Full Name *
+                      Nom Complet *
                     </label>
                     <input
                       type="text"
@@ -111,14 +186,14 @@ export default function ContactPage() {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white placeholder-white/50 focus:border-primary focus:outline-none rounded-none"
-                      placeholder="Enter your full name"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white placeholder-white/50 focus:border-[#D4AF37] focus:outline-none rounded-none"
+                      placeholder="Entrez votre nom complet"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-2">
-                      Email Address *
+                      Adresse E-mail *
                     </label>
                     <input
                       type="email"
@@ -127,14 +202,14 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white placeholder-white/50 focus:border-primary focus:outline-none rounded-none"
-                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white placeholder-white/50 focus:border-[#D4AF37] focus:outline-none rounded-none"
+                      placeholder="votre@email.com"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="serviceType" className="block text-white/80 text-sm font-medium mb-2">
-                      Service Type *
+                      Type de Service *
                     </label>
                     <select
                       id="serviceType"
@@ -142,19 +217,19 @@ export default function ContactPage() {
                       value={formData.serviceType}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white focus:border-primary focus:outline-none rounded-none"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white focus:border-[#D4AF37] focus:outline-none rounded-none"
                     >
-                      <option value="">Select a service type</option>
-                      <option value="wedding">Wedding</option>
+                      <option value="">Sélectionnez un type de service</option>
+                      <option value="wedding">Mariage</option>
                       <option value="commercial">Commercial</option>
-                      <option value="music-video">Music Video</option>
-                      <option value="other">Other</option>
+                      <option value="music-video">Vidéo Musicale</option>
+                      <option value="other">Autre</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="projectDescription" className="block text-white/80 text-sm font-medium mb-2">
-                      Project Description *
+                      Description du Projet *
                     </label>
                     <textarea
                       id="projectDescription"
@@ -163,17 +238,25 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white placeholder-white/50 focus:border-primary focus:outline-none rounded-none resize-none"
-                      placeholder="Please describe your project and vision..."
+                      className="w-full px-4 py-3 bg-black/50 border border-white/20 text-white placeholder-white/50 focus:border-[#D4AF37] focus:outline-none rounded-none resize-none"
+                      placeholder="Décrivez votre projet et votre vision..."
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-primary text-black hover:bg-primary/90 text-lg px-8 py-4 rounded-none font-semibold"
+                    disabled={isLoading}
+                    className="w-full bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-lg px-8 py-4 rounded-none font-semibold transition-all duration-300 shadow-lg hover:shadow-[#D4AF37]/25 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="w-5 h-5 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin mr-2"></div>
+                        Envoi en cours...
+                      </div>
+                    ) : (
+                      'Envoyer le Message'
+                    )}
                   </Button>
                 </form>
               </div>
@@ -188,43 +271,32 @@ export default function ContactPage() {
             >
               {/* Stay Connected */}
               <div className="bg-black/50 border border-white/10 p-8">
-                <h3 className="text-2xl font-serif text-primary mb-6">Stay Connected</h3>
+                <h3 className="text-2xl font-serif text-[#D4AF37] mb-6">Réseaux Sociaux</h3>
                 <p className="text-white/70 mb-6">
-                  Follow us on social media for updates and behind-the-scenes content.
+                  Suivez-nous pour découvrir nos derniers projets et coulisses.
                 </p>
                 
                 <div className="space-y-4">
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/rahim.mrbt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all group"
+                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/5 transition-all group"
                   >
-                    <Instagram className="text-primary w-6 h-6" />
+                    <Instagram className="text-[#D4AF37] w-6 h-6 group-hover:shadow-lg group-hover:shadow-[#D4AF37]/30 transition-all duration-300" />
                     <div>
                       <h4 className="text-white font-semibold">Instagram</h4>
-                      <p className="text-white/50 text-sm">Rahim Merabet</p>
+                      <p className="text-white/50 text-sm">@rahim.mrbt</p>
                     </div>
                   </a>
 
                   <a
-                    href="mailto:contact@rahimmerabet.com"
-                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all group"
-                  >
-                    <Mail className="text-primary w-6 h-6" />
-                    <div>
-                      <h4 className="text-white font-semibold">Email</h4>
-                      <span>contact@rahimmerabet.com</span>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/rahim.merabet.412488/about/?fb_profile_edit_entry_point=%7B%22click_point%22%3A%22edit_profile_button%22%2C%22feature%22%3A%22profile_header%22%7D&id=100072671658300&sk=about&locale=fr_FR"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all group"
+                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/5 transition-all group"
                   >
-                    <Facebook className="text-primary w-6 h-6" />
+                    <Facebook className="text-[#D4AF37] w-6 h-6 group-hover:shadow-lg group-hover:shadow-[#D4AF37]/30 transition-all duration-300" />
                     <div>
                       <h4 className="text-white font-semibold">Facebook</h4>
                       <p className="text-white/50 text-sm">Rahim Merabet</p>
@@ -232,53 +304,30 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/merabet-abderrahim-58a46b331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all group"
+                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/5 transition-all group"
                   >
-                    <Linkedin className="text-primary w-6 h-6" />
+                    <Linkedin className="text-[#D4AF37] w-6 h-6 group-hover:shadow-lg group-hover:shadow-[#D4AF37]/30 transition-all duration-300" />
                     <div>
                       <h4 className="text-white font-semibold">LinkedIn</h4>
-                      <p className="text-white/50 text-sm">Professional Network</p>
+                      <p className="text-white/50 text-sm">Abderrahim Merabet</p>
                     </div>
                   </a>
 
                   <a
-                    href="https://wa.me/213555000000"
+                    href="https://wa.me/213660951299"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all group"
+                    className="flex items-center gap-4 p-4 border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/5 transition-all group"
                   >
-                    <MessageCircle className="text-primary w-6 h-6" />
+                    <MessageCircle className="text-[#D4AF37] w-6 h-6 group-hover:shadow-lg group-hover:shadow-[#D4AF37]/30 transition-all duration-300" />
                     <div>
                       <h4 className="text-white font-semibold">WhatsApp</h4>
-                      <p className="text-white/50 text-sm">+213 555 00 00 00</p>
+                      <p className="text-white/50 text-sm">+213 660 951 299</p>
                     </div>
                   </a>
-                </div>
-              </div>
-
-              {/* Quick Contact Info */}
-              <div className="bg-black/50 border border-white/10 p-8">
-                <h3 className="text-2xl font-serif text-primary mb-6">Quick Info</h3>
-                <div className="space-y-4 text-white/80">
-                  <div className="flex items-center gap-3">
-                    <Mail className="text-primary w-5 h-5" />
-                    <span>contact@rahimmerabet.com</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="text-primary w-5 h-5" />
-                    <span>+213 555 00 00 00</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="text-primary w-5 h-5" />
-                    <span>Algiers, Algeria</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="text-primary w-5 h-5" />
-                    <span>Mon-Sat: 9AM-8PM</span>
-                  </div>
                 </div>
               </div>
             </motion.div>

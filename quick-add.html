@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Featured Work</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #000; color: #fff; }
+        input, button { padding: 10px; margin: 5px; }
+        button { background: #CA8A04; color: #000; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Add site1.mp4 to Featured Works</h2>
+    <form id="addWorkForm">
+        <input type="text" id="title" value="R motion - Cinematic Portfolio Showcase" placeholder="Title" required><br><br>
+        <input type="text" id="url" value="/site1.mp4" placeholder="URL" required><br><br>
+        <select id="type">
+            <option value="video">Video</option>
+            <option value="image">Image</option>
+        </select><br><br>
+        <button type="submit">Add to Featured Works</button>
+    </form>
+    <div id="result"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+        const { createClient } = supabase;
+        const supabase = createClient('https://pbznrwkwxkwxfsdewtcv.supabase.co', 'sb_publishable_ftdPKjJmwzUXLCuCwOYLSw_YgmYrbfw');
+
+        document.getElementById('addWorkForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const work = {
+                title: document.getElementById('title').value,
+                url: document.getElementById('url').value,
+                type: document.getElementById('type').value
+            };
+
+            try {
+                const { data, error } = await supabase
+                    .from('works')
+                    .insert([work])
+                    .select();
+
+                if (error) {
+                    document.getElementById('result').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                } else {
+                    document.getElementById('result').innerHTML = `<p style="color: green;">✅ Work added successfully!</p>`;
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = `<p style="color: red;">Error: ${err.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

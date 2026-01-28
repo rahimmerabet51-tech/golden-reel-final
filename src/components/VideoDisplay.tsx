@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Video as VideoType } from "../../../shared/schema";
 import { Play } from "lucide-react";
+import ReactPlayer from "react-player";
 
 interface VideoDisplayProps {
   className?: string;
@@ -191,14 +192,16 @@ export function VideoDisplay({ className = "" }: VideoDisplayProps) {
             )}
             
             {!getEmbedUrl(video.videoUrl) && !video.videoUrl.includes('instagram.com') && (
-              <video
-                className="w-full h-full"
-                controls
-                preload="metadata"
-              >
-                <source src={video.videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div className="w-full h-full bg-black">
+                <ReactPlayer
+                  url={video.videoUrl}
+                  width="100%"
+                  height="100%"
+                  controls={true}
+                  playing={false}
+                  // @ts-ignore
+                />
+              </div>
             )}
           </div>
           

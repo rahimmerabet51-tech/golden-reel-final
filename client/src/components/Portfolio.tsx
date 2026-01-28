@@ -1,4 +1,4 @@
-import { VideoDisplay } from "./VideoDisplay";
+import ReactPlayer from "react-player";
 import { SectionHeading } from "./SectionHeading";
 
 export function Portfolio() {
@@ -10,7 +10,15 @@ export function Portfolio() {
           subtitle="Portfolio"
         />
         
-        <VideoDisplay />
+        <div className='w-full h-full bg-black'>
+          <ReactPlayer
+            url="/site1.mp4"
+            width="100%"
+            height="100%"
+            controls={true}
+            playing={true}
+          />
+        </div>
       </div>
     </section>
   );

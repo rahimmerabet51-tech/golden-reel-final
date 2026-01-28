@@ -17,9 +17,9 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { name: "HOME", href: "/" },
-    { name: "PROFILE", href: "/profile" },
-    { name: "FEATURED WORKS", href: "/featured-works" },
+    { name: "ACCUEIL", href: "/" },
+    { name: "PROFIL", href: "/profile" },
+    { name: "PROJETS RÉALISÉS", href: "/featured-works" },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -72,7 +72,7 @@ export function Navigation() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-xs font-sans tracking-[0.3em] text-white/60 uppercase"
             >
-              DESIGN & DÉVELOPPEMENT CINÉMATIQUE
+              CRÉATEUR VIDÉO
             </motion.span>
           </Link>
           <motion.div 
@@ -89,17 +89,16 @@ export function Navigation() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-display font-bold uppercase tracking-widest text-white/80 hover:text-white relative group transition-colors duration-200"
+              className="text-sm uppercase tracking-widest text-white/80 hover:text-[#D4AF37] transition-colors duration-200"
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
           <Button 
-            className="bg-primary text-black hover:bg-primary/90 font-display font-bold rounded-none px-6"
+            className="bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-semibold rounded-none px-6 transition-all duration-300 shadow-lg hover:shadow-[#D4AF37]/25"
             asChild
           >
-            <Link href="/contact">CONTACT</Link>
+            <Link href="/contact">CONTACT POUR PROJET SUR MESURE</Link>
           </Button>
         </div>
 
@@ -126,18 +125,17 @@ export function Navigation() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-display font-bold text-white/90 hover:text-white relative group transition-colors"
+                  className="text-lg font-serif text-white/90 hover:text-[#D4AF37] transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
               <Button 
-                className="bg-primary text-black hover:bg-primary/90 font-display font-bold rounded-none px-6 w-full"
+                className="bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-semibold rounded-none px-6 w-full transition-all duration-300 shadow-lg hover:shadow-[#D4AF37]/25"
                 asChild
               >
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT POUR PROJET SUR MESURE</Link>
               </Button>
             </div>
           </motion.div>

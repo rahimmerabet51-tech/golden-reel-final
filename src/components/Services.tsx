@@ -5,10 +5,10 @@ import { useServices } from "@/hooks/use-portfolio";
 
 // Mock services if API empty
 const mockServices = [
-  { id: 1, title: "Videography", description: "Professional video production services including weddings, events, corporate films, and commercials. Capturing your story with cinematic quality.", priceRange: "Starting at $3,500" },
-  { id: 2, title: "Photography", description: "Stunning photography services for portraits, events, products, and architectural projects. Creating timeless images that tell your story.", priceRange: "Starting at $2,000" },
-  { id: 3, title: "Post-Production", description: "Professional editing, color grading, and visual effects. Transform your raw footage into polished, compelling visual content.", priceRange: "Custom Quote" },
-  { id: 4, title: "Aerial Photography", description: "Drone and aerial cinematography for breathtaking perspectives. Perfect for real estate, events, and establishing shots.", priceRange: "Custom Quote" },
+  { id: 1, title: "Videography", description: "Professional video production services including weddings, events, corporate films, and commercials. Capturing your story with cinematic quality.", priceRange: "À partir de 50 000 DA" },
+  { id: 2, title: "Photography", description: "Stunning photography services for portraits, events, products, and architectural projects. Creating timeless images that tell your story.", priceRange: "À partir de 50 000 DA" },
+  { id: 3, title: "Post-Production", description: "Professional editing, color grading, and visual effects. Transform your raw footage into polished, compelling visual content.", priceRange: "Sur Devis" },
+  { id: 4, title: "Aerial Photography", description: "Drone and aerial cinematography for breathtaking perspectives. Perfect for real estate, events, and establishing shots.", priceRange: "Sur Devis" },
 ];
 
 export function Services() {
@@ -55,11 +55,11 @@ export function Services() {
                 </p>
 
                 <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
-                  <span className="text-primary font-medium">
-                    {service.priceRange || "Custom Quote"}
+                  <span className="text-[#D4AF37] font-medium">
+                    {service.priceRange || "Sur Devis"}
                   </span>
                   <a href="#contact" className="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors">
-                    Inquire &rarr;
+                    DEMANDER UN DEVIS &rarr;
                   </a>
                 </div>
               </motion.div>
