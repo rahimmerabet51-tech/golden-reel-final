@@ -46,34 +46,16 @@ export function Navigation() {
         >
           <Link
             href="/"
-            className="flex flex-col items-start"
+            className="flex items-center"
           >
-            <div className="flex items-baseline">
-              <motion.span 
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-2xl md:text-3xl font-display font-black text-primary"
-              >
-                R
-              </motion.span>
-              <motion.span 
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl font-display font-black tracking-wider text-white ml-1"
-              >
-                motion
-              </motion.span>
-            </div>
-            <motion.span 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xs font-sans tracking-[0.3em] text-white/60 uppercase"
-            >
-              CRÉATEUR VIDÉO
-            </motion.span>
+            <motion.img
+              src="/logo1.png"
+              alt="R motion"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-10 md:h-16 w-auto"
+            />
           </Link>
           <motion.div 
             initial={{ width: 0 }}
